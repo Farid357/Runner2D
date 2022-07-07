@@ -1,23 +1,27 @@
 using UnityEngine;
 using Tools;
 using Random = UnityEngine.Random;
+using System;
 
-public sealed class SpikeGenerator : MonoBehaviour
+public sealed class SpikeGenerator : MonoBehaviour, ITryingGenerator
 {
     [SerializeField] private int _startCount = 3;
     [SerializeField] private SpikeCollision _prefab;
-    [SerializeField] private CoinGenerator _generator;
+    private ITryingGenerator _spawner;
     private readonly ObjectsPool<SpikeCollision> _pool = new();
 
-    private void Start()
+    public event Action<Vector2> OnTriedSpawn;
+
+    public void Init(ITryingGenerator spawner)
     {
+        _spawner = spawner ?? throw new ArgumentNullException(nameof(spawner));
         _pool.Add(_startCount, _prefab);
-        _generator.OnTryedSpawn += TrySpawn;
+        _spawner.OnTriedSpawn += TrySpawn;
     }
 
     private void OnDisable()
     {
-        _generator.OnTryedSpawn -= TrySpawn;
+        _spawner.OnTriedSpawn -= TrySpawn;
     }
 
     private void TrySpawn(Vector2 position)
@@ -27,6 +31,10 @@ public sealed class SpikeGenerator : MonoBehaviour
         if (index == 2 && position.y >= PlayerMovement.Position.y)
         {
             Spawn(position);
+        }
+        else
+        {
+            OnTriedSpawn?.Invoke(position);
         }
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class PlatformGenerator : MonoBehaviour
+public sealed class PlatformGenerator : MonoBehaviour
 {
     public event Action<Vector2> OnSpawned;
     [SerializeField] private Transform _player;

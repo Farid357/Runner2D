@@ -2,9 +2,9 @@ using UnityEngine;
 using Tools;
 using System;
 
-public sealed class CoinGenerator : MonoBehaviour
+public sealed class CoinGenerator : MonoBehaviour, ITryingGenerator
 {
-    public event Action<Vector2> OnTryedSpawn;
+    public event Action<Vector2> OnTriedSpawn;
     [SerializeField] private PlatformGenerator _generator;
     [SerializeField] private CoinCollision _prefab;
     [SerializeField] private int _startCount = 4;
@@ -28,7 +28,7 @@ public sealed class CoinGenerator : MonoBehaviour
         if (randomNumber == 3)
             Spawn(position);
         else
-            OnTryedSpawn?.Invoke(position);
+            OnTriedSpawn?.Invoke(position);
     }
 
     private void Spawn(Vector2 position)

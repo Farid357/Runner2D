@@ -2604,7 +2604,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startCount: 3
   _prefab: {fileID: 9109512864153194492, guid: 7dfdc30b99b407e4882419fed22e42c8, type: 3}
-  _generator: {fileID: 710844604}
 --- !u!1 &1566810453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3090,6 +3089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1836537245}
   - component: {fileID: 1836537244}
+  - component: {fileID: 1836537246}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -3127,6 +3127,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836537246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836537243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9f7c74751bba940a10b51b26452c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spikeGenerator: {fileID: 1495877115}
+  _coinGenerator: {fileID: 710844604}
 --- !u!1 &1846313226
 GameObject:
   m_ObjectHideFlags: 0
