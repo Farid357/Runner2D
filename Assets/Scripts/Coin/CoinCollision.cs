@@ -23,6 +23,5 @@ public sealed class CoinCollision : MonoBehaviour
             OnCollected?.Invoke();
             PlayerMovement.IncreaseSpeed();
         }
-
     }
 }
